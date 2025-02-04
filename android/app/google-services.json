@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "103712354509",
+    "project_id": "cashseven-94110",
+    "storage_bucket": "cashseven-94110.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:103712354509:android:aa054455704e3392d27984",
+        "android_client_info": {
+          "package_name": "com.cashseven.surveyfive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "103712354509-f5ndfu94kim0k5ievnnsfau26iobeci0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cashseven.surveyfive",
+            "certificate_hash": "d1834ed31c2c1068d58021d2458d29ed868709c5"
+          }
+        },
+        {
+          "client_id": "103712354509-kf02mvsg73n7q0griou47gqkv8vp24ak.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArfWLqzWfTstrpu6hxrtrrZG8tZ583qo8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "103712354509-kf02mvsg73n7q0griou47gqkv8vp24ak.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "103712354509-8ubkvuro9dctvcdmei6ottq9fbr7b169.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.surveyFive"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
