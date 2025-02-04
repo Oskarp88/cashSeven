@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:survey_five/data/repositories/authentication/authentication_repository.dart';
+import 'package:survey_five/features/personalization/controllers/user_controller.dart';
 import 'package:survey_five/utils/connects/network_manager.dart';
 import 'package:survey_five/utils/constants/string_image.dart';
 import 'package:survey_five/utils/loaders/loaders.dart';
@@ -15,6 +16,8 @@ class LoginController extends GetxController{
   final email = TextEditingController();
   final password = TextEditingController();
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+
+  final userController = Get.put(UserController());
 
   @override
   void onInit(){
@@ -42,7 +45,33 @@ class LoginController extends GetxController{
       }
 
       final userCredentials = await AuthenticationRepository.instance.loginWithEmailAndPassword(email.text.trim(), password.text.trim());
-     
+      
+      await userController.saveUserRecord(userCredentials);
+
+      OFullScreenLoader.stopLoading();
+
+      AuthenticationRepository.instance.screenRedirect();
+
+    } catch (e) {
+      OFullScreenLoader.stopLoading();
+      Loaders.errorSnackBar(title: 'Oh Snap', message: e.toString());
+    }
+  }
+
+  Future<void> googleSignIn() async{
+    try {
+      OFullScreenLoader.openLoadingDialog('Loggin you in...', MyImage.loadingImage);
+
+      final isConnected = await NetworkManager.instance.isConnected();
+      if(!isConnected){
+        OFullScreenLoader.stopLoading();
+        return;
+      }
+
+      final userCredentials = await AuthenticationRepository.instance.signInWithGoogle();
+
+      await userController.saveUserRecord(userCredentials);
+
       OFullScreenLoader.stopLoading();
 
       AuthenticationRepository.instance.screenRedirect();

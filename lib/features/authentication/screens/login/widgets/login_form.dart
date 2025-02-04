@@ -6,7 +6,6 @@ import 'package:survey_five/features/authentication/controllers/login/login_cont
 import 'package:survey_five/utils/constants/dimensions.dart';
 import 'package:survey_five/features/authentication/screens/password_configuration/forgot_password.dart';
 import 'package:survey_five/features/authentication/screens/signup/signup.dart';
-import 'package:survey_five/navigation_menu.dart';
 import 'package:survey_five/utils/validators/validation.dart';
 
 class LoginForm extends StatelessWidget {

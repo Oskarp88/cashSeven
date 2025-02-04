@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:survey_five/common/styles/my_text_style.dart';
+import 'package:survey_five/utils/constants/colors.dart';
 import 'package:survey_five/utils/constants/dimensions.dart';
 import 'package:survey_five/features/authentication/screens/password_configuration/reset_password.dart';
 
@@ -10,7 +12,10 @@ class ForgotPassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: MyColors.blueDark9,
+        iconTheme: const IconThemeData(color: Colors.white),
+      ),
       body:  Padding(
         padding: EdgeInsets.all(Dimensions.defaultSpace),
         child: Column(
@@ -19,12 +24,12 @@ class ForgotPassword extends StatelessWidget {
             ///headings
             Text(
               'Forgot Password',
-               style: Theme.of(context).textTheme.headlineMedium,
+               style: MyTextStyle.headlineMedium,
             ),
             SizedBox(height: Dimensions.spaceBtwItems),
             Text(
-              'ooooooooooo',
-              style: Theme.of(context).textTheme.labelMedium
+              'Don´t worry sometimes people can forget too, enter your email and we will send you a password reset link.',
+              style: MyTextStyle.labelMedium
             ),
             SizedBox(height: Dimensions.spaceBtwSections * 2),
             ///text field

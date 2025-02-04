@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:survey_five/features/authentication/screens/login/login.dart';
 import 'package:survey_five/features/authentication/screens/signup/verify_email.dart';
 import 'package:survey_five/navigation_menu.dart';
@@ -37,6 +38,20 @@ class AuthenticationRepository extends GetxController{
     }
   }
 
+  Future<UserCredential> signInWithGoogle()async{
+    try {
+      final GoogleSignInAccount? userAccount = await GoogleSignIn().signIn();
+      final GoogleSignInAuthentication? googleAuth = await userAccount?.authentication;
+      final credentials = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken, 
+        idToken: googleAuth?.idToken
+      );
+      return await _auth.signInWithCredential(credentials);
+    } catch (e) {
+      throw 'Something sent wrong. Please try again $e';
+    }
+  }
+
   ///register
   Future<UserCredential> registerWithEmailAndPassword(String email, String password)async{
     try {
@@ -56,6 +71,7 @@ class AuthenticationRepository extends GetxController{
 
   Future<void> logout() async{
     try {
+      await GoogleSignIn().signOut();
       await FirebaseAuth.instance.signOut();
       Get.offAll(()=> const LoginScreen());
     } catch (e) {

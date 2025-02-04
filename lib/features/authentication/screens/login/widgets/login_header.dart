@@ -11,20 +11,23 @@ class LoginHaeder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Image(
-          height: Dimensions.height100,
-          image: const AssetImage(MyImage.logoCash)
-        ),
-        Text(
-          'Login',
-          style: MyTextStyle.headlineMedium,
-        ),
-        SizedBox(height: Dimensions.height10),
-        Text('Bienvenido', style: MyTextStyle.bodyMedium),
-      ],
+    return Padding(
+      padding: EdgeInsets.only(top: Dimensions.height30),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Image(
+            height: Dimensions.height100,
+            image: const AssetImage(MyImage.logoCash)
+          ),
+          Text(
+            'Login',
+            style: MyTextStyle.headlineMedium,
+          ),
+          SizedBox(height: Dimensions.height10),
+          Text('Bienvenido', style: MyTextStyle.bodyMedium),
+        ],
+      ),
     );
   }
 }

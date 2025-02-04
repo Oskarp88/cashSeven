@@ -17,23 +17,20 @@ class LoginScreen extends StatelessWidget {
       body:  SingleChildScrollView(
         child: Padding(
           padding: MySpacingStyle.paddingWithAppBarHeight,
-          child:  SizedBox(
-            height: Dimensions.screenHeigth,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ///logo, title $ Sub-title
-                 const LoginHaeder(),
-                ///form
-                 const LoginForm(),
-                ///divider
-                 const FormDivider(dividetText: 'Or sign in with',),
-                 SizedBox(height: Dimensions.spaceBtwSections),
-                ///Footer
-                 const SocialButtons(),
-              ],
-            ),
+          child:  Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ///logo, title $ Sub-title
+               const LoginHaeder(),
+              ///form
+               const LoginForm(),
+              ///divider
+               const FormDivider(dividetText: 'Or sign in with',),
+               SizedBox(height: Dimensions.spaceBtwSections),
+              ///Footer
+               const SocialButtons(),
+            ],
           ),
         ),
       ),
