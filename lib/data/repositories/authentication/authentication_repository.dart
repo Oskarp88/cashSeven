@@ -1,10 +1,13 @@
+import 'package:bitlabs/bitlabs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:survey_five/data/repositories/user/user_repository.dart';
 import 'package:survey_five/features/authentication/screens/login/login.dart';
 import 'package:survey_five/features/authentication/screens/signup/verify_email.dart';
+import 'package:survey_five/features/personalization/controllers/user_controller.dart';
 import 'package:survey_five/navigation_menu.dart';
 
 class AuthenticationRepository extends GetxController{
@@ -21,8 +24,11 @@ class AuthenticationRepository extends GetxController{
   }
 
   screenRedirect() async {
+     Get.lazyPut<UserRepository>(() => UserRepository());
+     Get.put(UserController());
     final user = _auth.currentUser;
     if(user != null){
+      BitLabs.instance.init(dotenv.env['TOKEN_KEY'].toString(), user.uid);
       if(user.emailVerified){
         Get.offAll(() => const NavigationMenu());
       }else{

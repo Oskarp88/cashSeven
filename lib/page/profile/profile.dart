@@ -6,7 +6,7 @@ import 'package:survey_five/common/styles/my_text_style.dart';
 import 'package:survey_five/common/widgets/texts/section_headig.dart';
 import 'package:survey_five/data/repositories/authentication/authentication_repository.dart';
 import 'package:survey_five/features/personalization/controllers/user_controller.dart';
-import 'package:survey_five/features/personalization/screens/profile/widgets/re_authenticate_user_login_form.dart';
+import 'package:survey_five/page/profile/widgets/re_authenticate_user_login_form.dart';
 import 'package:survey_five/page/profile/widgets/profile_menu.dart';
 import 'package:survey_five/utils/constants/colors.dart';
 import 'package:survey_five/utils/constants/dimensions.dart';

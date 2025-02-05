@@ -7,7 +7,7 @@ import 'package:survey_five/data/repositories/authentication/authentication_repo
 import 'package:survey_five/data/repositories/user/user_repository.dart';
 import 'package:survey_five/features/authentication/models/user_model.dart';
 import 'package:survey_five/features/authentication/screens/login/login.dart';
-import 'package:survey_five/features/personalization/screens/profile/widgets/re_authenticate_user_login_form.dart';
+import 'package:survey_five/page/profile/widgets/re_authenticate_user_login_form.dart';
 import 'package:survey_five/utils/connects/network_manager.dart';
 import 'package:survey_five/utils/constants/colors.dart';
 import 'package:survey_five/utils/constants/dimensions.dart';
