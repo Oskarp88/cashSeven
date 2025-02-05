@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:survey_five/utils/constants/colors.dart';
 
 class MyTextFieldTheme {
@@ -11,7 +12,7 @@ class MyTextFieldTheme {
     //constraints: const BoxConstraints.expand(height: 14, inputFieldHeight),
      labelStyle: const TextStyle().copyWith(fontSize: 14, color: MyColors.wesAsphalt0),
      hintStyle: const TextStyle().copyWith(fontSize: 14, color: MyColors.wesAsphalt0),
-     errorStyle: const TextStyle().copyWith(fontStyle: FontStyle.normal),
+     errorStyle: GoogleFonts.aBeeZee().copyWith(fontStyle: FontStyle.italic, color: Colors.red, fontWeight: FontWeight.w700),
      floatingLabelStyle: const TextStyle().copyWith(color: const Color(0xffd6eaf8).withOpacity(0.8)),
      border: const OutlineInputBorder().copyWith(
        borderRadius: BorderRadius.circular(30),

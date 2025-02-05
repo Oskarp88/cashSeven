@@ -26,39 +26,3 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
-
-  @override
-  State<HomePage>  createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  final String appToken = 'gWkPDBakmTsbsfAsgGzlOVm7VKSwsdgN';
-  final String userId = '12938489djands3920sadkkdka';
-
-  @override
-  void initState() {
-    super.initState();
-    BitLabs.instance.init(appToken, userId);
-  }
-void _mostrarEncuestas() async {
- 
-}
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Mi App de Encuestas'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: _mostrarEncuestas,
-          child: Text('Mostrar Encuestas'),
-        ),
-      ),
-    );
-  }
-}

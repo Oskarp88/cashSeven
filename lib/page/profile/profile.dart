@@ -1,9 +1,12 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:survey_five/common/styles/my_text_style.dart';
 import 'package:survey_five/common/widgets/texts/section_headig.dart';
 import 'package:survey_five/data/repositories/authentication/authentication_repository.dart';
+import 'package:survey_five/features/personalization/controllers/user_controller.dart';
+import 'package:survey_five/features/personalization/screens/profile/widgets/re_authenticate_user_login_form.dart';
 import 'package:survey_five/page/profile/widgets/profile_menu.dart';
 import 'package:survey_five/utils/constants/colors.dart';
 import 'package:survey_five/utils/constants/dimensions.dart';
@@ -14,7 +17,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    final controller = UserController.instance;
     double screenwidth = MediaQuery.of(context).size.width;
 
     return  Stack(
@@ -28,13 +31,10 @@ class ProfileScreen extends StatelessWidget {
         //     ),
         Scaffold(
           appBar: AppBar(
-            title: const Text(
+            backgroundColor: MyColors.blueDark9,
+            title: Text(
               'Perfil de Usuario',
-              style: TextStyle(
-                color: MyColors.blueLight1,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: MyTextStyle.headlineMedium,
             ),
           ),
         
@@ -46,37 +46,34 @@ class ProfileScreen extends StatelessWidget {
                 children: [
                   ///profile picture
                   SizedBox(height: Dimensions.spaceBtwItems / 2),
-                  const Divider(color:MyColors.blackBackgroundColor,),
-                  SizedBox(height: Dimensions.spaceBtwItems),
-                  const SectionHeading(
-                    title: 'Profile Information',
-                    textColor: MyColors.greebAccentDark8,
-                    // shadowColor: MyColors.greebAccentDark2,
-                    showActionButton: false,
-                  ),
-                   
-                  SizedBox(height: Dimensions.spaceBtwItems),
-                  const Divider(color: MyColors.blackBackgroundColor,),
-                  SizedBox(height: Dimensions.spaceBtwItems),
                   const SectionHeading(
                     title: 'Personal Information',
-                    textColor: MyColors.greebAccentDark8,
+                    textColor: MyColors.greebAccentDark0,
                     // shadowColor: MyColors.greebAccentDark2,
                     showActionButton: false,
                   ),
                   SizedBox(height: Dimensions.spaceBtwItems),
-                  ProfileMenu(
-                    onPressed: (){},
-                    title: 'User ID',
-                    value: 'yyyyyyyyyyyyyy',
-                    icon: Iconsax.copy,
+                  Obx(
+                    () => ProfileMenu(
+                      onPressed: (){},
+                      title: 'User ID',
+                      value: controller.user.value.id,
+                    ),
                   ),
-                  ProfileMenu(
-                    onPressed: (){},
-                    title: 'E-mail',
-                    value:' user.email',
+                  SizedBox(height: Dimensions.spaceBtwItems),
+                  Obx(
+                    () => ProfileMenu(
+                      onPressed: (){},
+                      title: 'E-mail',
+                      value: controller.user.value.email,
+                    ),
                   ),
-                  
+                   SizedBox(height: Dimensions.spaceBtwItems),
+                   IconButton(
+                    onPressed: () => controller.deleteAccountWarningPopup(), 
+                    icon: Text('Account delete', style: MyTextStyle.headlineSmall.apply(color: Colors.red)),
+                  ),
+                  SizedBox(height: Dimensions.height30,),
                   GestureDetector(
                     onTap: () async {
                       bool? confirm = await showDialog(

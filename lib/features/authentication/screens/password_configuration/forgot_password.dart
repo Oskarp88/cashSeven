@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:survey_five/common/styles/my_text_style.dart';
+import 'package:survey_five/features/authentication/controllers/forget_password/forget_passoword_controller.dart';
 import 'package:survey_five/utils/constants/colors.dart';
 import 'package:survey_five/utils/constants/dimensions.dart';
-import 'package:survey_five/features/authentication/screens/password_configuration/reset_password.dart';
+import 'package:survey_five/utils/validators/validation.dart';
 
 class ForgotPassword extends StatelessWidget {
   const ForgotPassword({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ForgetPasswordController());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: MyColors.blueDark9,
@@ -33,10 +35,16 @@ class ForgotPassword extends StatelessWidget {
             ),
             SizedBox(height: Dimensions.spaceBtwSections * 2),
             ///text field
-            TextFormField(
-              decoration: const InputDecoration(
-                labelText: 'Email',
-                prefixIcon:  Icon(Iconsax.direct_right) 
+            Form(
+              key: controller.forgetPasswordFormKey,
+              child: TextFormField(
+                controller: controller.email,
+                validator: TValidator.validateEmail,
+                style: MyTextStyle.titleMedium,
+                decoration: const InputDecoration(
+                  labelText: 'Email',
+                  prefixIcon:  Icon(Iconsax.direct_right) 
+                ),
               ),
             ),
             SizedBox(height: Dimensions.spaceBtwSections),
@@ -44,7 +52,7 @@ class ForgotPassword extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: ()=> Get.off(()=> const ResetPassword()),
+                onPressed: () => controller.sendPasswordResetEmail(),
                 child: const Text('Submit')
               ),
             ),

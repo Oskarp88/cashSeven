@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:survey_five/common/styles/my_text_style.dart';
 
 class SectionHeading extends StatelessWidget {
   final Color? textColor;
@@ -22,7 +23,7 @@ class SectionHeading extends StatelessWidget {
       children: [
         Text(
            title, 
-           style: Theme.of(context).textTheme.headlineSmall!.apply(color: textColor),
+           style: MyTextStyle.headlineSmall.apply(color: textColor),
            maxLines: 1,
            overflow: TextOverflow.ellipsis,
          ),

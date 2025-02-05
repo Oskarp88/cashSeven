@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:survey_five/page/home/screen/home_screen.dart';
 import 'package:survey_five/page/profile/profile.dart';
 import 'package:survey_five/utils/constants/colors.dart';
 
@@ -55,7 +56,7 @@ return Scaffold(
 class NavigationController extends GetxController{
   final Rx<int> selectedIndex = 0.obs;
   final screens = [
-    const Text('hola'),
+    const HomeScreen(),
     const Text('hola'),
     const Text('hola'),
     const ProfileScreen(),
